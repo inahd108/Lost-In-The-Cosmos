@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://2n3oacu44atj"]
+
+[ext_resource type="Script" uid="uid://hwnufgfk225a" path="res://teleporter.gd" id="1_tuh0n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aceia"]
+size = Vector2(94196, 223)
+
+[node name="Killzone" type="Area2D" unique_id=1774720865]
+script = ExtResource("1_tuh0n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=294013161]
+position = Vector2(42978, -101.5)
+shape = SubResource("RectangleShape2D_aceia")

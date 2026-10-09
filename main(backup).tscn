@@ -1,0 +1,155 @@
+[gd_scene format=4 uid="uid://bo3bcxxl4stl7"]
+
+[ext_resource type="PackedScene" uid="uid://b3kiff060ulfr" path="res://teleporter.tscn" id="1_6x2ex"]
+[ext_resource type="Script" uid="uid://bg5xp01hxdc0j" path="res://player.gd" id="1_57bug"]
+[ext_resource type="Texture2D" uid="uid://yg12yyv4x0sd" path="res://sprites/AstronautWalktrans.png" id="2_o3web"]
+[ext_resource type="Texture2D" uid="uid://cdl0fko7k4pp1" path="res://sprites/Background.Space.Clouds.png" id="2_vak6w"]
+[ext_resource type="Texture2D" uid="uid://b1b0svn4md73w" path="res://sprites/platform-tile.png" id="3_vak6w"]
+[ext_resource type="Texture2D" uid="uid://bn00cfro57sh1" path="res://sprites/platform-end-right.png" id="3_yk5yi"]
+[ext_resource type="Texture2D" uid="uid://bn3c0kes4eyg4" path="res://sprites/platform-end-left.png" id="4_eui4o"]
+[ext_resource type="Texture2D" uid="uid://ct5ccwbqw8hhj" path="res://sprites/AstronautIdle.png" id="4_vak6w"]
+[ext_resource type="PackedScene" uid="uid://2n3oacu44atj" path="res://kill_zone.tscn" id="9_5ra2o"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1bvp3"]
+texture = ExtResource("3_vak6w")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -3.0468063, 8, -2.9974403, 8, 2.1762905, -8, 2.1762905)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eui4o"]
+texture = ExtResource("3_yk5yi")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -2.8727036, 7.2394414, 2.2467227, -8, 2.0146732, -8, -3.0468063)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6x2ex"]
+texture = ExtResource("4_eui4o")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -2.6985989, 8, -2.8727036, 8, 2.8727036, -8, 2.3503952)
+
+[sub_resource type="TileSet" id="TileSet_lquwl"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_1bvp3")
+sources/1 = SubResource("TileSetAtlasSource_eui4o")
+sources/2 = SubResource("TileSetAtlasSource_6x2ex")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eui4o"]
+radius = 15.5
+height = 74.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yk5yi"]
+atlas = ExtResource("4_vak6w")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eui4o"]
+atlas = ExtResource("4_vak6w")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1bvp3"]
+atlas = ExtResource("2_o3web")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lquwl"]
+atlas = ExtResource("2_o3web")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mycd"]
+atlas = ExtResource("2_o3web")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_272bh"]
+atlas = ExtResource("2_o3web")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vw27"]
+atlas = ExtResource("2_o3web")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kek77"]
+atlas = ExtResource("2_o3web")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4c57u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yk5yi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eui4o")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"running_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1bvp3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lquwl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mycd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_272bh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vw27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kek77")
+}],
+"loop": true,
+"name": &"running_right",
+"speed": 6.0
+}]
+
+[node name="Main" type="Node2D" unique_id=1285097682]
+
+[node name="teleporter" parent="." unique_id=1999693381 instance=ExtResource("1_6x2ex")]
+position = Vector2(8880, -809)
+target_scene = "uid://dm5rfhsun4un"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1374375066]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=1826690287]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_vak6w")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1920567173]
+position = Vector2(-3.8146973e-06, -307)
+scale = Vector2(5, 5)
+tile_map_data = PackedByteArray("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")
+tile_set = SubResource("TileSet_lquwl")
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1377784789]
+script = ExtResource("1_57bug")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1283401329]
+position = Vector2(32.5, 34)
+shape = SubResource("CapsuleShape2D_eui4o")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=1928092653]
+position = Vector2(34, 33.102276)
+scale = Vector2(4.21875, 4.3622155)
+sprite_frames = SubResource("SpriteFrames_4c57u")
+animation = &"idle"
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=662137314]
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+
+[node name="Killzone" parent="." unique_id=1774720865 instance=ExtResource("9_5ra2o")]
+position = Vector2(479, 932)
+target_scene = "uid://bo3bcxxl4stl7"

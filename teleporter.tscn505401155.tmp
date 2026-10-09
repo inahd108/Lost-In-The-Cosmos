@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://b3kiff060ulfr"]
+
+[ext_resource type="Script" uid="uid://hwnufgfk225a" path="res://teleporter.gd" id="1_tuehi"]
+[ext_resource type="Texture2D" uid="uid://bvx0l3xpodsea" path="res://sprites/portalAnimation.png" id="2_kk6yu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahrse"]
+atlas = ExtResource("2_kk6yu")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpfq8"]
+atlas = ExtResource("2_kk6yu")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vbqk"]
+atlas = ExtResource("2_kk6yu")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_laavw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ahrse")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cpfq8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vbqk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rlsis"]
+radius = 55.0
+height = 166.0
+
+[node name="teleporter" type="Area2D" unique_id=172205124]
+script = ExtResource("1_tuehi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1996792994]
+position = Vector2(-54.999992, -54.999992)
+scale = Vector2(4.4374995, 4.4374995)
+sprite_frames = SubResource("SpriteFrames_laavw")
+autoplay = "default"
+frame_progress = 0.28309155
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=708332077]
+position = Vector2(-41, -54)
+shape = SubResource("CapsuleShape2D_rlsis")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

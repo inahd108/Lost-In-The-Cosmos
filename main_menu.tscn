@@ -1,0 +1,114 @@
+[gd_scene format=3 uid="uid://ciuj6uceiw8m6"]
+
+[ext_resource type="Texture2D" uid="uid://d36b7b0vk68ge" path="res://sprites/Homescreen.png" id="1_06t4h"]
+[ext_resource type="Script" uid="uid://lx4e8ace14g6" path="res://main_menu.gd" id="1_fu7sn"]
+[ext_resource type="Texture2D" uid="uid://dl5ksr04myhvr" path="res://sprites/PlayButton.png" id="3_jix8l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_glbon"]
+atlas = ExtResource("3_jix8l")
+region = Rect2(0, 0, 62, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nlkkf"]
+atlas = ExtResource("3_jix8l")
+region = Rect2(64, 0, 62, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qe12f"]
+atlas = ExtResource("3_jix8l")
+region = Rect2(128, 0, 62, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qtwp"]
+atlas = ExtResource("3_jix8l")
+region = Rect2(192, 0, 62, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dy7ct"]
+atlas = ExtResource("3_jix8l")
+region = Rect2(256, 0, 62, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0o4t1"]
+atlas = ExtResource("3_jix8l")
+region = Rect2(320, 0, 62, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0k4wn"]
+atlas = ExtResource("3_jix8l")
+region = Rect2(384, 0, 62, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j5v2v"]
+atlas = ExtResource("3_jix8l")
+region = Rect2(448, 0, 62, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iotk1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_glbon")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nlkkf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qe12f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qtwp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dy7ct")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0o4t1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0k4wn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j5v2v")
+}],
+"loop": true,
+"name": &"play_button_idle",
+"speed": 4.5
+}]
+
+[node name="Main_Menu" type="Control" unique_id=1635355444]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fu7sn")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1827515308]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 2.0
+offset_right = 17.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_06t4h")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=699753843]
+custom_minimum_size = Vector2(200, 110)
+layout_mode = 0
+offset_left = 379.0
+offset_top = 490.9
+offset_right = 789.0
+offset_bottom = 600.9005
+
+[node name="PlayButton" type="Button" parent="VBoxContainer" unique_id=1846747379]
+custom_minimum_size = Vector2(410, 80)
+layout_mode = 2
+flat = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer/PlayButton" unique_id=2002977577]
+position = Vector2(-2.795, -17.93)
+scale = Vector2(6.625001, 6.625001)
+sprite_frames = SubResource("SpriteFrames_iotk1")
+animation = &"play_button_idle"
+autoplay = "play_button_idle"
+frame_progress = 0.8759761
+centered = false
+
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
